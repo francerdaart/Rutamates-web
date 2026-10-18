@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta Mates | Mates, Bombillas y Accesorios</title>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-principal: #1f2421;
+            --color-secundario: #212529;
+            --color-fondo: #f8f9fa;
+            --color-blanco: #ffffff;
+            --color-dorado: #c5a059;
+            --color-whatsapp: #25d366;
+            --color-instagram: #e1306c;
+            --fuente-titulo: 'Playfair Display', serif;
+            --fuente-texto: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente-texto);
+            background-color: var(--color-fondo);
+            color: var(--color-principal);
+            line-height: 1.6;
+        }
+
+        /* HEADER / NAVEGACIÓN */
+        header {
+            background-color: var(--color-blanco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo-text {
+            font-family: var(--fuente-titulo);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--color-principal);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            font-family: var(--fuente-texto);
+            font-weight: 300;
+            margin-top: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-principal);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-dorado);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596797882870-8c33deeac224?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+            height: 60vh;
+            color: var(--color-blanco);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--fuente-titulo);
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: var(--color-dorado);
+            color: var(--color-blanco);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn-main:hover {
+            background-color: #a88443;
+        }
+
+        /* SECCIÓN CATÁLOGO */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--fuente-titulo);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            margin: 40px 0 20px 0;
+            border-bottom: 2px solid var(--color-dorado);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--color-blanco);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            font-size: 0.88rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-principal);
+            margin-bottom: 15px;
+        }
+
+        .btn-whatsapp-product {
+            display: block;
+            text-align: center;
+            background-color: var(--color-whatsapp);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .btn-whatsapp-product:hover {
+            background-color: #1ebd56;
+        }
+
+        /* SECCIÓN CONTACTO Y REDES */
+        .contact-section {
+            background-color: var(--color-blanco);
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 1px solid #eee;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .social-btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-ig {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .btn-wsp {
+            background-color: var(--color-whatsapp);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-principal);
+            color: var(--color-blanco);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .btn-float-wsp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--color-whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .btn-float-wsp:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-container { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV / HEADER -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-text">
+                RUTA
+                <span class="logo-sub">MATES</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <h1>Un buen mate une caminos</h1>
+        <p>Encontrá el compañero perfecto para tu día a día. Mates, bombillas y accesorios de excelente calidad.</p>
+        <a href="#catalogo" class="btn-main">Ver Catálogo</a>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="catalog-container" id="catalogo">
+        <h2 class="section-title">Nuestros Productos</h2>
+        <p class="section-subtitle">Elegí el tuyo y consultanos directamente por WhatsApp</p>
+
+        <!-- CATEGORÍA: MATES -->
+        <h3 class="category-title">Mates</h3>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596797882870-8c33deeac224?q=80&w=500&auto=format&fit=crop" alt="Mate Camionero" class="product-img">
+                <div class="product-info">
+                    <div>
+                        <h4 class="product-title">Mate Camionero de Calabaza</h4>
+                        <p class="product-desc">Forrado en cuero vacuno con virola de alpaca / acero inoxidables.</p>
+                        <p class="product-price">Consultar precio</p>
+                    </div>
+                    <a href="https://wa.me/5492944391998?text=Hola!%20Quiero%20consultar%20por%20el%20Mate%20Camionero" class="btn-whatsapp-product" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596797882870-8c33deeac224?q=80&w=500&auto=format&fit=crop" alt="Mate Imperial" class="product-img">
+                <div class="product-info">
+                    <div>
+                        <h4 class="product-title">Mate Imperial Premium</h4>
+                        <p class="product-desc">Calabaza seleccionada, virola cincelada a mano y cuatro patas reforzadas.</p>
+                        <p class="product-price">Consultar precio</p>
+                    </div>
+                    <a href="https://wa.me/5492944391998?text=Hola!%20Quiero%20consultar%20por%20el%20Mate%20Imperial" class="btn-whatsapp-product" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596797882870-8c33deeac224?q=80&w=500&auto=format&fit=crop" alt="Mate Torpedo" class="product-img">
+                <div class="product-info">
+                    <div>
+                        <h4 class="product-title">Mate Torpedo</h4>
+                        <p class="product-desc">Diseño clásico y cómodo, forrado en cuero liso de alta calidad.</p>
+                        <p class="product-price">Consultar precio</p>
+                    </div>
+                    <a href="https://wa.me/5492944391998?text=Hola!%20Quiero%20consultar%20por%20el%20Mate%20Torpedo" class="btn-whatsapp-product" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORÍA: BOMBILLAS Y ACCESORIOS -->
+        <h3 class="category-title">Bombillas y Accesorios</h3>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596797882870-8c33deeac224?q=80&w=500&auto=format&fit=crop" alt="Bombilla Pico de Loro" class="product-img">
+                <div class="product-info">
+                    <div>
+                        <h4 class="product-title">Bombilla Pico de Loro Alpaca</h4>
+                        <p class="product-desc">Diseño curvo anatómico con filtro tipo pala de excelente caudal.</p>
+                        <p class="product-price">Consultar precio</p>
+                    </div>
+                    <a href="https://wa.me/5492944391998?text=Hola!%20Quiero%20consultar%20por%20la%20Bombilla%20Pico%20de%20Loro" class="btn-whatsapp-product" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596797882870-8c33deeac224?q=80&w=500&auto=format&fit=crop" alt="Set Matero" class="product-img">
+                <div class="product-info">
+                    <div>
+                        <h4 class="product-title">Set Yerbera y Azucarera</h4>
+                        <p class="product-desc">Juego de latas forradas en ecocuero ideal para llevar en la mochila o bolso.</p>
+                        <p class="product-price">Consultar precio</p>
+                    </div>
+                    <a href="https://wa.me/5492944391998?text=Hola!%20Quiero%20consultar%20por%20el%20Set%20Matero" class="btn-whatsapp-product" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO Y REDES -->
+    <section class="contact-section" id="contacto">
+        <h2 class="section-title">Contactanos</h2>
+        <p class="section-subtitle">Hacé tu pedido o sacate cualquier duda hablando directamente con nosotros</p>
+        
+        <div class="social-buttons">
+            <a href="https://www.instagram.com/rutamates?dlrf=MXZtcWRmY2licnB2YQ==" class="social-btn btn-ig" target="_blank">
+                <i class="fa-brands fa-instagram"></i> @rutamates
+            </a>
+            <a href="https://wa.me/5492944391998" class="social-btn btn-wsp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i> +54 9 294 439-1998
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Ruta Mates. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/5492944391998?text=Hola!%20Me%20contacto%20desde%20la%20pagina%20web" class="btn-float-wsp" target="_blank" title="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
